@@ -1,6 +1,10 @@
 name: Sisyphus Agent
 
 on:
+  # Automatic triggers (push / pull_request / schedule / release /
+  # workflow_run / ...) were removed on 2026-10-31. This workflow now
+  # runs only when started by hand: Actions tab -> Run workflow, or
+  # `gh workflow run <file>`.
   workflow_dispatch:
     inputs:
       prompt:
@@ -8,9 +12,6 @@ on:
         required: false
   # Only issue_comment works for fork PRs (secrets available)
   # pull_request_review/pull_request_review_comment do NOT get secrets for fork PRs
-  issue_comment:
-    types: [created]
-
 jobs:
   agent:
     runs-on: ubuntu-latest
